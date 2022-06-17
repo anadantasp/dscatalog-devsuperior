@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
-import org.hibernate.ResourceClosedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,7 +51,7 @@ public class CategoryService {
 		entity = repository.save(entity);
 		return new CategoryDTO(entity);
 		} catch (EntityNotFoundException e) {
-			throw new ResourceClosedException("Id not found " + id);
+			throw new ResourceNotFoundException("Id not found " + id);
 		}
 		
 		
